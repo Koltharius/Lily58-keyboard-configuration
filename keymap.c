@@ -104,7 +104,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                   XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
   XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                   XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
   XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
-                          _______, _______, _______, _______, _______,  _______, _______, _______
+              _______, _______, _______, _______, _______,  _______, _______, _______
   )
 };
 
@@ -245,7 +245,8 @@ static void render_anim(void) {
 }
 
 static void render_status(void) {
-  oled_set_cursor(0,1);
+  // WPM
+  oled_set_cursor(0,0);
   uint8_t n = get_current_wpm();
   char    wpm_counter[4];
   wpm_counter[3] = '\0';
@@ -254,6 +255,16 @@ static void render_status(void) {
   wpm_counter[0] = n / 10 ? '0' + n / 10 : ' ';
   oled_write_P(PSTR("WPM: "), false);
   oled_write(wpm_counter, false);
+
+  // Layer indicator
+  oled_set_cursor(0,1);
+  oled_write_ln(read_layer_state(), false);
+
+  // Keylog indicator
+  oled_set_cursor(0,2);
+  oled_write_ln(read_keylog(), false);
+  oled_set_cursor(0,3);
+  oled_write_ln(read_keylogs(), false);
 }
 
 bool oled_task_user(void) {
