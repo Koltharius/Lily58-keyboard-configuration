@@ -19,6 +19,25 @@ The OLED display on the right side includes a Bongo Cat animation loop based on 
 
 ![](https://media.giphy.com/media/sthmCnCpfr8M8jtTQy/giphy.gif)
 
+## Layout
+This is the layout that I'm ussing on my Lily58.
+
+### QWERTY Layout
+
+![Qwerty](./Layout/qwerty.png)
+
+### Raise Layout
+
+![Raise](./Layout/raise.png)
+
+### Lower Layout
+
+![Lower](./Layout/lower.png)
+
+### Adjust Layout
+
+![Adjust](./Layout/adjust.png)
+
 ## How to use it
 
 You can flash this configuration on your Lily58 Pro following the steps described on the [QMK webpage](https://docs.qmk.fm/#/).
